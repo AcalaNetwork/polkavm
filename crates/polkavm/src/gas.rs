@@ -15,6 +15,7 @@ impl GasVisitor {
     }
 
     #[inline]
+    #[allow(dead_code)]
     pub fn take_block_cost(&mut self) -> Option<u32> {
         self.last_block_cost.take()
     }

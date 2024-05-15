@@ -73,6 +73,7 @@ impl Error {
     }
 
     #[cold]
+    #[allow(dead_code)]
     pub(crate) fn context(self, message: impl core::fmt::Display) -> Self {
         let string = match self.0 {
             ErrorKind::Owned(mut buffer) => {

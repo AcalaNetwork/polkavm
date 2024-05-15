@@ -62,6 +62,7 @@ pub(crate) struct EngineState {
 }
 
 pub struct Engine {
+    #[allow(dead_code)]
     selected_backend: BackendKind,
     #[allow(dead_code)]
     selected_sandbox: Option<SandboxKind>,
@@ -1727,6 +1728,7 @@ pub(crate) struct ExecuteArgs<'a> {
     pub(crate) flags: u32,
     pub(crate) hostcall_handler: Option<HostcallHandler<'a>>,
     pub(crate) module: Option<&'a Module>,
+    #[allow(dead_code)]
     pub(crate) is_async: bool,
 }
 
