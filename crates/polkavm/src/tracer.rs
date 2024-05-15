@@ -152,7 +152,7 @@ impl Tracer {
     fn trace_current_instruction_source(&mut self, program_counter: u32) {
         #[cfg(not(windows))]
         const VT_DARK: &str = "\x1B[1;30m";
-        #[cfg(not(windows))]
+        #[cfg(all(not(windows), feature = "std"))]
         const VT_GREEN: &str = "\x1B[1;32m";
         #[cfg(not(windows))]
         const VT_RESET: &str = "\x1B[0m";
@@ -258,10 +258,13 @@ impl Tracer {
         }
 
         self.current_source_location = location_ref;
-        let Some((path_offset, line)) = location_ref else {
+        #[cfg(feature = "std")]
+        let Some((path_offset, line)) = location_ref
+        else {
             return;
         };
 
+        #[cfg(feature = "std")]
         let Ok(path) = self.module.get_debug_string(path_offset) else {
             return;
         };

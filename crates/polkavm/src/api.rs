@@ -1,6 +1,9 @@
-use alloc::borrow::{Cow, ToOwned};
+use alloc::borrow::Cow;
+#[cfg(not(feature = "std"))]
+use alloc::borrow::ToOwned;
 use alloc::format;
 use alloc::sync::Arc;
+#[cfg(not(feature = "std"))]
 use alloc::vec::Vec;
 
 #[cfg(not(feature = "std"))]

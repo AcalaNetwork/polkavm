@@ -1,4 +1,5 @@
 use alloc::format;
+#[cfg(not(feature = "std"))]
 use alloc::string::{String, ToString};
 use polkavm_common::program::ProgramParseError;
 
