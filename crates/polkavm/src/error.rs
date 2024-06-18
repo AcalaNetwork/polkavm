@@ -1,4 +1,5 @@
 use alloc::format;
+#[cfg(not(feature = "std"))]
 use alloc::string::{String, ToString};
 use polkavm_common::program::ProgramParseError;
 
@@ -73,6 +74,7 @@ impl Error {
     }
 
     #[cold]
+    #[allow(dead_code)]
     pub(crate) fn context(self, message: impl core::fmt::Display) -> Self {
         let string = match self.0 {
             ErrorKind::Owned(mut buffer) => {

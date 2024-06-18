@@ -2,6 +2,7 @@ use crate::api::BackendAccess;
 use crate::tracer::Tracer;
 use crate::Gas;
 use alloc::rc::{Rc, Weak};
+#[cfg(not(feature = "std"))]
 use alloc::vec::Vec;
 use core::mem::MaybeUninit;
 use polkavm_common::error::Trap;

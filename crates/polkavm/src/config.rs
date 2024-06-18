@@ -1,3 +1,4 @@
+#[cfg(feature = "std")]
 use crate::error::{bail, Error};
 
 #[derive(Copy, Clone, PartialEq, Eq, Debug)]

@@ -1,6 +1,9 @@
-use alloc::borrow::{Cow, ToOwned};
+use alloc::borrow::Cow;
+#[cfg(not(feature = "std"))]
+use alloc::borrow::ToOwned;
 use alloc::format;
 use alloc::sync::Arc;
+#[cfg(not(feature = "std"))]
 use alloc::vec::Vec;
 
 #[cfg(not(feature = "std"))]
@@ -49,6 +52,7 @@ if_compiler_is_supported! {
 pub type RegValue = u32;
 
 pub struct Engine {
+    #[allow(dead_code)]
     selected_backend: BackendKind,
     #[allow(dead_code)]
     selected_sandbox: Option<SandboxKind>,
@@ -1723,6 +1727,7 @@ pub(crate) struct ExecuteArgs<'a> {
     pub(crate) flags: u32,
     pub(crate) hostcall_handler: Option<HostcallHandler<'a>>,
     pub(crate) module: Option<&'a Module>,
+    #[allow(dead_code)]
     pub(crate) is_async: bool,
 }
 
